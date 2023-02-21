@@ -24,6 +24,11 @@ type iUpdateUserResultWithPass = QueryResult<iUpdateUser>;
 
 type iListUsers = z.infer<typeof listUsersSchema>;
 
+interface iRequestTokenData {
+  id: number;
+  admin: boolean;
+}
+
 export {
   iUserRequest,
   iUser,
@@ -36,4 +41,5 @@ export {
   iUpdateUserWithoutPassword,
   iUpdateUserResult,
   iUpdateUserResultWithPass,
+  iRequestTokenData,
 };
