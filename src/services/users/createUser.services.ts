@@ -1,11 +1,8 @@
-import { request, response } from "express";
 import { iUserRequest, iUserResult, iUserWithoutPassword } from "../../interfaces/users.interface";
 import format from "pg-format";
 import { client } from "../../database";
-import { QueryConfig, QueryResult } from "pg";
-import { AppError } from "../../error";
-import { createUserSchema, returnUserSchemaWithoutPassword } from "../../schemas/users.schemas";
-import { hash } from "bcryptjs";
+
+import { returnUserSchemaWithoutPassword } from "../../schemas/users.schemas";
 
 const createUserServices = async (userData: iUserRequest): Promise<iUserWithoutPassword> => {
   const queryString: string = format(

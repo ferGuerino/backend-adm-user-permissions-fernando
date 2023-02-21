@@ -1,5 +1,6 @@
-import { iUserResult, iUserWithoutPassword, iListUsers } from "../../interfaces/users.interface";
+import { iListUsers } from "../../interfaces/users.interface";
 import { client } from "../../database";
+import { listUsersSchema } from "../../schemas/users.schemas";
 
 const listUsersServices = async (): Promise<iListUsers> => {
   const queryString: string = `
@@ -11,7 +12,9 @@ const listUsersServices = async (): Promise<iListUsers> => {
 
   const queryResult = await client.query(queryString);
 
-  return queryResult.rows;
+  const returnUsers = listUsersSchema.parse(queryResult.rows);
+
+  return returnUsers;
 };
 
 export default listUsersServices;

@@ -1,12 +1,7 @@
 import { QueryConfig } from "pg";
 import { client } from "../../database";
 import { AppError } from "../../error";
-import {
-  iRequestTokenData,
-  iUser,
-  iUserResult,
-  iUserWithoutPassword,
-} from "../../interfaces/users.interface";
+import { iRequestTokenData, iUserResult, iUserWithoutPassword } from "../../interfaces/users.interface";
 import { returnUserSchemaWithoutPassword } from "../../schemas/users.schemas";
 
 const activateUserServices = async (

@@ -7,11 +7,15 @@ import format from "pg-format";
 import { client } from "../../database";
 import { QueryConfig } from "pg";
 import { returnUpdateUserSchemaWithoutPassword } from "../../schemas/users.schemas";
+import { AppError } from "../../error";
 
 const updateUserServices = async (
   userData: iUpdateUserRequest,
   userId: number
 ): Promise<iUpdateUserWithoutPassword | any> => {
+  if (Object.keys(userData).length === 0) {
+    throw new AppError("One of keys (name,email,password) is required", 400);
+  }
   const queryString: string = format(
     `
     UPDATE

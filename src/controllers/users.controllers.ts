@@ -4,14 +4,8 @@ import listUsersServices from "../services/users/listUsers.services";
 import retrieveUserProfileServices from "../services/users/retrieveUserProfile.services";
 import softDeleteUserServices from "../services/users/softDeleteUser.services";
 import activateUserServices from "../services/users/activateUser.services";
-import {
-  iUserRequest,
-  iUserWithoutPassword,
-  iUpdateUserRequest,
-  iRequestTokenData,
-} from "../interfaces/users.interface";
+import { iUserRequest, iUpdateUserRequest } from "../interfaces/users.interface";
 import updateUserServices from "../services/users/updateUser.services";
-import { AppError } from "../error";
 
 const createUsersController = async (request: Request, response: Response): Promise<Response> => {
   const userData: iUserRequest = request.body;

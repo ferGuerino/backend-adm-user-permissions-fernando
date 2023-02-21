@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { AppError } from "../error";
-import jwt, { decode } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import "dotenv/config";
 
 const ensureValidToken = async (
@@ -11,7 +11,7 @@ const ensureValidToken = async (
   let token = request.headers.authorization;
 
   if (!token) {
-    throw new AppError("Token is missing", 401);
+    throw new AppError("Missing Bearer Token", 401);
   }
 
   token = token.split(" ")[1];

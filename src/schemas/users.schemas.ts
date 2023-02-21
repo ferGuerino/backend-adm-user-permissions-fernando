@@ -8,7 +8,6 @@ const createUserSchema = z.object({
     return hashSync(pass, 10);
   }),
   admin: z.boolean(),
-  active: z.boolean(),
 });
 
 const updateUserSchema = z.object({
@@ -23,16 +22,19 @@ const updateUserSchema = z.object({
 });
 
 const returnUserSchema = createUserSchema.extend({
+  active: z.boolean(),
   id: z.number(),
 });
 
 const returnUpdateUserSchema = updateUserSchema.extend({
+  active: z.boolean(),
+  admin: z.boolean(),
   id: z.number(),
 });
 
 const returnUserSchemaWithoutPassword = returnUserSchema.omit({ password: true });
 
-const listUsersSchema = z.array(returnUserSchema);
+const listUsersSchema = z.array(returnUserSchema.omit({ password: true }));
 
 const returnUpdateUserSchemaWithoutPassword = returnUpdateUserSchema.omit({ password: true });
 

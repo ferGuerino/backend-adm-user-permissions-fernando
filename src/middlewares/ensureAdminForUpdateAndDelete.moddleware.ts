@@ -2,7 +2,6 @@ import { Request, Response, NextFunction } from "express";
 import { QueryConfig } from "pg";
 import { AppError } from "../error";
 import { client } from "../database";
-import { iRequestTokenData } from "../interfaces/users.interface";
 
 const ensureAdminforUpdateAndDelete = async (
   request: Request,
